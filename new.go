@@ -15,6 +15,14 @@ func New(prefix string) *Multiplexer {
 	}
 	mux.EventHandlers = []interface{}{
 		mux.onReady,
+		mux.onGuildMemberAdd,
+		mux.onGuildMemberRemove,
+		mux.onGuildDelete,
+		mux.onMessageCreate,
+		mux.onMessageDelete,
+		mux.onMessageUpdate,
+		mux.onMessageReactionAdd,
+		mux.onMessageReactionRemove,
 	}
 	return mux
 }
