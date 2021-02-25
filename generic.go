@@ -109,7 +109,7 @@ func (mux *Multiplexer) onMessageUpdate(session *discordgo.Session, update *disc
 				Multiplexer: mux,
 				Message:     update.Message,
 				Session:     session,
-				Event:       delete,
+				Event:       update,
 			})
 		}
 	}()
