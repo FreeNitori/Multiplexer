@@ -90,11 +90,12 @@ func (mux *Multiplexer) onMessageCreate(session *discordgo.Session, create *disc
 func (mux *Multiplexer) onMessageDelete(session *discordgo.Session, delete *discordgo.MessageDelete) {
 	go func() {
 		for _, hook := range mux.MessageDelete {
-			context := mux.NewContextMessage(session, delete.Message, delete)
-			if context == nil {
-				return
-			}
-			hook(context)
+			hook(&Context{
+				Multiplexer: mux,
+				Message:     delete.Message,
+				Session:     session,
+				Event:       delete,
+			})
 		}
 	}()
 	return
@@ -104,11 +105,12 @@ func (mux *Multiplexer) onMessageDelete(session *discordgo.Session, delete *disc
 func (mux *Multiplexer) onMessageUpdate(session *discordgo.Session, update *discordgo.MessageUpdate) {
 	go func() {
 		for _, hook := range mux.MessageUpdate {
-			context := mux.NewContextMessage(session, update.Message, update)
-			if context == nil {
-				return
-			}
-			hook(context)
+			hook(&Context{
+				Multiplexer: mux,
+				Message:     update.Message,
+				Session:     session,
+				Event:       delete,
+			})
 		}
 	}()
 	return
