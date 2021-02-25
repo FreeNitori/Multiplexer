@@ -28,6 +28,7 @@ func (mux *Multiplexer) onGuildMemberAdd(session *discordgo.Session, add *discor
 			hook(&Context{
 				Multiplexer: mux,
 				Member:      add.Member,
+				User:        add.Member.User,
 				Session:     session,
 				Guild:       guild,
 				Event:       add,
@@ -48,6 +49,7 @@ func (mux *Multiplexer) onGuildMemberRemove(session *discordgo.Session, remove *
 			hook(&Context{
 				Multiplexer: mux,
 				Member:      remove.Member,
+				User:        remove.Member.User,
 				Session:     session,
 				Guild:       guild,
 				Event:       remove,
