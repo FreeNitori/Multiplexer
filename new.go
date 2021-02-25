@@ -14,6 +14,7 @@ func New(prefix string) *Multiplexer {
 		Categories: []*CommandCategory{AudioCategory, ExperienceCategory, ManualsCategory, MediaCategory, ModerationCategory, SystemCategory},
 	}
 	mux.EventHandlers = []interface{}{
+		mux.handleMessageCommand,
 		mux.onReady,
 		mux.onGuildMemberAdd,
 		mux.onGuildMemberRemove,
