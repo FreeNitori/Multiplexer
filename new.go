@@ -8,9 +8,8 @@ import (
 )
 
 // New returns a command router.
-func New(prefix string) *Multiplexer {
+func New() *Multiplexer {
 	mux := &Multiplexer{
-		Prefix:     prefix,
 		Categories: []*CommandCategory{AudioCategory, ExperienceCategory, ManualsCategory, MediaCategory, ModerationCategory, SystemCategory},
 	}
 	mux.EventHandlers = []interface{}{
