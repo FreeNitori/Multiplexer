@@ -41,11 +41,13 @@ func NewCategory(name string, description string) *CommandCategory {
 func (mux *Multiplexer) NewContextMessage(session *discordgo.Session, message *discordgo.Message, event interface{}) *Context {
 	guild := GetGuild(session, message.GuildID)
 	if guild == nil {
+		log.Errorf("Unable to obtain guild when making Context.")
 		return nil
 	}
 
 	channel := GetChannel(session, message.ChannelID)
 	if channel == nil {
+		log.Errorf("Unable to obtain channel when making Context.")
 		return nil
 	}
 

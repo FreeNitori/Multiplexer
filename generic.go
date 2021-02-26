@@ -127,6 +127,7 @@ func (mux *Multiplexer) onMessageReactionAdd(session *discordgo.Session, add *di
 				log.Errorf("Unable to get message %s from channel %s, %s", add.MessageID, add.ChannelID, err)
 				return
 			}
+			message.GuildID = add.GuildID
 			context := mux.NewContextMessage(session, message, add)
 			if context == nil {
 				return
@@ -146,6 +147,7 @@ func (mux *Multiplexer) onMessageReactionRemove(session *discordgo.Session, remo
 				log.Errorf("Unable to get message %s from channel %s, %s", remove.MessageID, remove.ChannelID, err)
 				return
 			}
+			message.GuildID = remove.GuildID
 			context := mux.NewContextMessage(session, message, remove)
 			if context == nil {
 				return
