@@ -2,6 +2,7 @@ package multiplexer
 
 import (
 	"fmt"
+	log "git.randomchars.net/FreeNitori/Log"
 	"github.com/bwmarrin/discordgo"
 	"regexp"
 	"strings"

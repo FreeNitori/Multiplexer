@@ -1,6 +1,9 @@
 package multiplexer
 
-import "github.com/bwmarrin/discordgo"
+import (
+	log "git.randomchars.net/FreeNitori/Log"
+	"github.com/bwmarrin/discordgo"
+)
 
 // GetGuild fetches guild from cache then API and returns nil if all fails.
 func GetGuild(session *discordgo.Session, id string) *discordgo.Guild {

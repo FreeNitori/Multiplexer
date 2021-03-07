@@ -1,6 +1,9 @@
 package multiplexer
 
-import "github.com/bwmarrin/discordgo"
+import (
+	log "git.randomchars.net/FreeNitori/Log"
+	"github.com/bwmarrin/discordgo"
+)
 
 // Event handler that fires when ready
 func (mux *Multiplexer) onReady(session *discordgo.Session, ready *discordgo.Ready) {

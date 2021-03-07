@@ -1,6 +1,7 @@
 package multiplexer
 
 import (
+	log "git.randomchars.net/FreeNitori/Log"
 	"github.com/bwmarrin/discordgo"
 	"strconv"
 	"strings"
