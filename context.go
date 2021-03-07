@@ -3,6 +3,7 @@ package multiplexer
 import (
 	"errors"
 	embedutil "git.randomchars.net/FreeNitori/EmbedUtil"
+	log "git.randomchars.net/FreeNitori/Log"
 	"github.com/bwmarrin/discordgo"
 	"github.com/sirupsen/logrus"
 	"regexp"
