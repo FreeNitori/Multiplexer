@@ -235,6 +235,9 @@ func (context *Context) GetRole(query string) *discordgo.Role {
 
 // StitchFields stitches together fields of the message.
 func (context *Context) StitchFields(start int) string {
+	if len(context.Fields) <= start {
+		return ""
+	}
 	message := context.Fields[start]
 	for i := start + 1; i < len(context.Fields); i++ {
 		message += " " + context.Fields[i]
