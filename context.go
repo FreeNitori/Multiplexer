@@ -124,20 +124,12 @@ func (context *Context) HasPermission(permission int) bool {
 
 // IsOperator checks of a user is an operator.
 func (context *Context) IsOperator() bool {
-	if context.User.ID == context.Multiplexer.Administrator.ID {
-		return true
-	}
-	for _, operator := range context.Multiplexer.Operator {
-		if context.User.ID == operator.ID {
-			return true
-		}
-	}
-	return false
+	return context.Multiplexer.IsOperator(context.User.ID)
 }
 
 // IsAdministrator checks of a user is the system administrator.
 func (context *Context) IsAdministrator() bool {
-	return context.User.ID == context.Multiplexer.Administrator.ID
+	return context.Multiplexer.IsAdministrator(context.User.ID)
 }
 
 // GetMember gets a member from a string representing it.

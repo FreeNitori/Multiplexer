@@ -1,5 +1,7 @@
 git.randomchars.net/FreeNitori/EmbedUtil v1.0.0 h1:EVJAigHC+1af3ncqRhzhdkypWmnbZlHCMsWMtxWAh1I=
 git.randomchars.net/FreeNitori/EmbedUtil v1.0.0/go.mod h1:kZj3AXs1ozTGsziMu2GaUJv2KHnStOeqlDUAPVPfkY8=
+git.randomchars.net/FreeNitori/EmbedUtil v1.0.1 h1:ig8jaH76aTm1BR5eKU+Ly/qwX4XE3X59yscR75Xa58E=
+git.randomchars.net/FreeNitori/EmbedUtil v1.0.1/go.mod h1:YOl1zIPQobbJ2TI5z+mQyd0B7ZD7AyqhbNdsn36LjPk=
 git.randomchars.net/FreeNitori/Log v1.0.0 h1:xifupyu15si9/5oNwLUz8aKMEiyvdlEMCiCq1VW5jdQ=
 git.randomchars.net/FreeNitori/Log v1.0.0/go.mod h1:d2oS6xzbzH2YIb7x2ZRYVaaLAgEqBTmu6BCqDcfyzzU=
 github.com/bwmarrin/discordgo v0.23.2 h1:BzrtTktixGHIu9Tt7dEE6diysEF9HWnXeHuoJEt2fH4=

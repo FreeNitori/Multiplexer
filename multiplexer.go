@@ -44,3 +44,21 @@ func (mux *Multiplexer) SessionRegisterHandlers(session *discordgo.Session) {
 		session.AddHandler(handler)
 	}
 }
+
+// IsOperator checks of a user is an operator.
+func (mux *Multiplexer) IsOperator(id string) bool {
+	if id == mux.Administrator.ID {
+		return true
+	}
+	for _, operator := range mux.Operator {
+		if id == operator.ID {
+			return true
+		}
+	}
+	return false
+}
+
+// IsAdministrator checks of a user is the system administrator.
+func (mux *Multiplexer) IsAdministrator(id string) bool {
+	return id == mux.Administrator.ID
+}
