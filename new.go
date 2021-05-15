@@ -41,6 +41,9 @@ func NewCategory(name string, description string) *CommandCategory {
 func (mux *Multiplexer) NewContextMessage(session *discordgo.Session, message *discordgo.Message, event interface{}) *Context {
 	guild := GetGuild(session, message.GuildID)
 	if guild == nil {
+		if message.Author.ID == session.State.User.ID {
+			return nil
+		}
 		log.Errorf("Unable to obtain guild when making Context.")
 		return nil
 	}
