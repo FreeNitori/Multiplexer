@@ -39,13 +39,13 @@ func NewCategory(name string, description string) *CommandCategory {
 
 // NewContextMessage returns pointer to Context generated from a message.
 func (mux *Multiplexer) NewContextMessage(session *discordgo.Session, message *discordgo.Message, event interface{}) *Context {
+	if message.Author.ID == session.State.User.ID {
+		return nil
+	}
+
 	guild := GetGuild(session, message.GuildID)
 	if guild == nil {
-		if message.Author.ID == session.State.User.ID {
-			return nil
-		}
-		log.Errorf("Unable to obtain guild when making Context.")
-		return nil
+		guild = &discordgo.Guild{}
 	}
 
 	channel := GetChannel(session, message.ChannelID)
