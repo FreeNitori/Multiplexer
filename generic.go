@@ -159,3 +159,32 @@ func (mux *Multiplexer) onMessageReactionRemove(session *discordgo.Session, remo
 		}
 	}()
 }
+
+// Event handler that fires when voice state updates
+func (mux *Multiplexer) onVoiceStateUpdate(session *discordgo.Session, update *discordgo.VoiceStateUpdate) {
+	go func() {
+		for _, hook := range mux.VoiceStateUpdate {
+			var user *discordgo.User
+			member, err := session.State.Member(update.GuildID, update.UserID)
+			if err != nil {
+				member, err = session.GuildMember(update.GuildID, update.UserID)
+				if err != nil {
+					log.Errorf("Error getting member %s from guild %s, %s.", update.UserID, update.GuildID, err)
+				} else {
+					user = member.User
+				}
+			} else {
+				user = member.User
+			}
+			hook(&Context{
+				Multiplexer: mux,
+				User:        user,
+				Member:      member,
+				Session:     session,
+				Guild:       GetGuild(session, update.GuildID),
+				Channel:     GetChannel(session, update.ChannelID),
+				Event:       update,
+			})
+		}
+	}()
+}

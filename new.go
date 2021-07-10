@@ -24,6 +24,7 @@ func New() *Multiplexer {
 		mux.onMessageUpdate,
 		mux.onMessageReactionAdd,
 		mux.onMessageReactionRemove,
+		mux.onVoiceStateUpdate,
 	}
 	return mux
 }

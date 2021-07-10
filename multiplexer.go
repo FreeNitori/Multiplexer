@@ -25,6 +25,7 @@ type Multiplexer struct {
 	MessageUpdate         []func(context *Context)
 	MessageReactionAdd    []func(context *Context)
 	MessageReactionRemove []func(context *Context)
+	VoiceStateUpdate      []func(context *Context)
 
 	// Administrator is the privileged administrator user with all privilege overrides and full access to all commands.
 	Administrator *discordgo.User
