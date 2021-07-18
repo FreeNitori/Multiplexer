@@ -1,4 +1,4 @@
-module git.randomchars.net/freeNitori/multiplexer
+module git.randomchars.net/freenitori/multiplexer
 
 go 1.15
 
