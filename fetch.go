@@ -1,7 +1,7 @@
 package multiplexer
 
 import (
-	log "git.randomchars.net/FreeNitori/Log"
+	"git.randomchars.net/freenitori/log"
 	"github.com/bwmarrin/discordgo"
 )
 
@@ -15,13 +15,13 @@ func GetGuild(session *discordgo.Session, id string) *discordgo.Guild {
 			// Attempt direct API fetching
 			guild, err = session.Guild(id)
 			if err != nil {
-				log.Errorf("Unable to fetch guild from API or cache, %s", err)
+				log.Errorf("Error fetching guild from API or cache, %s", err)
 				return nil
 			}
 			// Attempt caching the channel
 			err = session.State.GuildAdd(guild)
 			if err != nil {
-				log.Warnf("Unable to cache guild fetched from API, %s", err)
+				log.Warnf("Error caching guild fetched from API, %s", err)
 			}
 		}
 	}
@@ -37,13 +37,13 @@ func GetChannel(session *discordgo.Session, id string) *discordgo.Channel {
 		// Attempt direct API fetching
 		channel, err = session.Channel(id)
 		if err != nil {
-			log.Errorf("Unable to fetch channel from API or cache, %s", err)
+			log.Errorf("Error fetching channel from API or cache, %s", err)
 			return nil
 		}
 		// Attempt caching the channel
 		err = session.State.ChannelAdd(channel)
 		if err != nil {
-			log.Warnf("Unable to cache channel fetched from API, %s", err)
+			log.Warnf("Error caching channel fetched from API, %s", err)
 		}
 	}
 	return channel

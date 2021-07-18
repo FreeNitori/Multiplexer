@@ -1,7 +1,7 @@
 package multiplexer
 
 import (
-	log "git.randomchars.net/FreeNitori/Log"
+	"git.randomchars.net/freenitori/log"
 	"github.com/bwmarrin/discordgo"
 )
 
@@ -127,7 +127,7 @@ func (mux *Multiplexer) onMessageReactionAdd(session *discordgo.Session, add *di
 		for _, hook := range mux.MessageReactionAdd {
 			message, err := session.ChannelMessage(add.ChannelID, add.MessageID)
 			if err != nil {
-				log.Errorf("Unable to get message %s from channel %s, %s", add.MessageID, add.ChannelID, err)
+				log.Errorf("Error getting message %s from channel %s, %s", add.MessageID, add.ChannelID, err)
 				return
 			}
 			message.GuildID = add.GuildID
@@ -147,7 +147,7 @@ func (mux *Multiplexer) onMessageReactionRemove(session *discordgo.Session, remo
 		for _, hook := range mux.MessageReactionRemove {
 			message, err := session.ChannelMessage(remove.ChannelID, remove.MessageID)
 			if err != nil {
-				log.Errorf("Unable to get message %s from channel %s, %s", remove.MessageID, remove.ChannelID, err)
+				log.Errorf("Error getting message %s from channel %s, %s", remove.MessageID, remove.ChannelID, err)
 				return
 			}
 			message.GuildID = remove.GuildID

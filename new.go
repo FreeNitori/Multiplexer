@@ -2,7 +2,7 @@ package multiplexer
 
 import (
 	"fmt"
-	log "git.randomchars.net/FreeNitori/Log"
+	"git.randomchars.net/freenitori/log"
 	"github.com/bwmarrin/discordgo"
 	"regexp"
 	"strings"
@@ -51,7 +51,7 @@ func (mux *Multiplexer) NewContextMessage(session *discordgo.Session, message *d
 
 	channel := GetChannel(session, message.ChannelID)
 	if channel == nil {
-		log.Errorf("Unable to obtain channel when making Context.")
+		log.Errorf("Error obtaining channel when making Context.")
 		return nil
 	}
 
