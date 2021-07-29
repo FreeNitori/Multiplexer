@@ -143,7 +143,7 @@ func (context *Context) GetMember(query string) *discordgo.Member {
 	_, err := strconv.Atoi(query)
 	if strings.HasPrefix(query, "<@") && strings.HasSuffix(query, ">") || err == nil {
 		// Strip off the mention thingy
-		userID := numericalRegex.ReplaceAllString(query, "")
+		userID := strings.TrimSuffix(strings.TrimPrefix(strings.TrimPrefix(query, "<@"), "!"), ">")
 		// Length of a real snowflake after stripping off stuff
 		if len(userID) == 18 {
 			for _, member := range context.Guild.Members {

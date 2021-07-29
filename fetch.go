@@ -32,6 +32,11 @@ func GetGuild(session *discordgo.Session, id string) *discordgo.Guild {
 func GetChannel(session *discordgo.Session, id string) *discordgo.Channel {
 	var err error
 	var channel *discordgo.Channel
+
+	if id == "" {
+		return nil
+	}
+
 	channel, err = session.State.Channel(id)
 	if err != nil {
 		// Attempt direct API fetching
