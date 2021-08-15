@@ -62,7 +62,7 @@ func (context *Context) SendMessage(message string) *discordgo.Message {
 	return resultMessage
 }
 
-// SendEmbed sends an embedutil message in the current channel and returns the message.
+// SendEmbed sends an embed message in the current channel and returns the message.
 func (context *Context) SendEmbed(message string, embed embedutil.Embed) *discordgo.Message {
 	var err error
 	permissions, err := context.Session.State.UserChannelPermissions(context.Session.State.User.ID, context.Message.ChannelID)
@@ -84,7 +84,7 @@ func (context *Context) SendEmbed(message string, embed embedutil.Embed) *discor
 		})
 	}
 	if err != nil {
-		log.Errorf("Error while sending embedutil to guild %s, %s", context.Message.GuildID, err)
+		log.Errorf("Error while sending embed to guild %s, %s", context.Message.GuildID, err)
 		_, _ = context.Session.ChannelMessageSend(context.Message.ChannelID,
 			ErrorOccurred)
 		return nil
@@ -95,7 +95,7 @@ func (context *Context) SendEmbed(message string, embed embedutil.Embed) *discor
 // HandleError handles a returned error and send the information of it if in debug mode.
 func (context *Context) HandleError(err error) bool {
 	if err != nil {
-		log.Errorf("Error occurred while executing command, %s", err)
+		log.Errorf("Error occurred while handling Discord route, %s", err)
 		context.SendMessage(ErrorOccurred)
 		if log.GetLevel() == logrus.DebugLevel {
 			context.SendMessage(err.Error())
